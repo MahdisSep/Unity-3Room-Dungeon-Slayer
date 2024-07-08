@@ -111,6 +111,6 @@ public class PlayerMovement : MonoBehaviour
 
     public bool canAttack()
     {
-        return horizontalInput ==0 && isGrounded() && !onWall(); // player can attack if 1 : not moving left or right , 2 : being on the ground , 3 : not being on the wall
+        return horizontalInput==0 && isGrounded() && !onWall(); // player can attack if 1 : not moving left or right , 2 : being on the ground , 3 : not being on the wall
     }     
 }

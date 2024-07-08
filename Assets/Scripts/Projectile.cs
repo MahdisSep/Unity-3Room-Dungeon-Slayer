@@ -2,7 +2,7 @@
 using System;
 using UnityEngine;
 
-public class Project : MonoBehaviour
+public class Projectile : MonoBehaviour
 {
     [SerializeField] private float speed;
     private bool hit;
