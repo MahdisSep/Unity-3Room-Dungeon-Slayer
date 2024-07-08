@@ -3,12 +3,15 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float speed; // add speed to move player faster , make serializefield to edit directly from unity( varibale speed in player )
-    private Rigidbody2D body; //create refrence to it
+    private Rigidbody2D body; //create refrence to body of char
+
+     private Animator anim; //create refrence to animation of char
     
     //everytime the scripts loaded , get and store the component in body variable
     private void Awake()
     {
         body=GetComponent<Rigidbody2D>();
+        anim =GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -29,5 +32,7 @@ public class PlayerMovement : MonoBehaviour
 
         if(Input.GetKey(KeyCode.Space))
             body.velocity=new Vector2(body.velocity.x,speed); // jump with space key
+
+        anim.SetBool("run", horizontalInput != 0); // if it moves ->  bool run = true , if not -> bool run = false ;
     }
 }
