@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         body.velocity=new Vector2(Input.GetAxis("Horizontal")*speed,body.velocity.y); //input.getaxis ->left key = -1 and right key =1
-        // if(Input.GetKey(KeyCode.Space))
-        //     body.velocity=new Vector2(body.velocity.x,speed);
+        if(Input.GetKey(KeyCode.Space))
+            body.velocity=new Vector2(body.velocity.x,speed); // jump with space key
     }
 }
