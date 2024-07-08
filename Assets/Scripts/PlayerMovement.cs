@@ -6,6 +6,8 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D body; //create refrence to body of char
 
      private Animator anim; //create refrence to animation of char
+
+     private bool grounded;
     
     //everytime the scripts loaded , get and store the component in body variable
     private void Awake()
@@ -30,9 +32,23 @@ public class PlayerMovement : MonoBehaviour
             transform.localScale = new Vector3(-5,5,5);
         }
 
-        if(Input.GetKey(KeyCode.Space))
-            body.velocity=new Vector2(body.velocity.x,speed); // jump with space key
-
+        if(Input.GetKey(KeyCode.Space) && grounded) // if the key is space and character is on the ground then jump
+            jump();
+           
         anim.SetBool("run", horizontalInput != 0); // if it moves ->  bool run = true , if not -> bool run = false ;
+        anim.SetBool("grounded",grounded); // initial this bool with the boolean variable grounded in the code
+    
+    }
+
+    private void jump()
+    {
+         body.velocity=new Vector2(body.velocity.x,speed); // jump with space key
+         grounded = false ; // if char jumps , then grounded = false
+
+    }
+     private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Ground") // if the collision to the other objects with tag ground , then set grounded true.
+            grounded = true;
     }
 }
