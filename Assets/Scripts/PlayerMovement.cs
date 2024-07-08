@@ -14,7 +14,19 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        body.velocity=new Vector2(Input.GetAxis("Horizontal")*speed,body.velocity.y); //input.getaxis ->left key = -1 and right key =1
+        float horizontalInput = Input.GetAxis("Horizontal");
+
+        body.velocity=new Vector2(horizontalInput*speed,body.velocity.y); //input.getaxis ->left key = -1 and right key =1
+
+        if(horizontalInput > 0.01f) //flip character to the right
+        {
+            transform.localScale = new Vector3(5,5,5);
+        }
+        else if (horizontalInput < -0.01f) //flip character to the left
+        {
+            transform.localScale = new Vector3(-5,5,5);
+        }
+
         if(Input.GetKey(KeyCode.Space))
             body.velocity=new Vector2(body.velocity.x,speed); // jump with space key
     }
