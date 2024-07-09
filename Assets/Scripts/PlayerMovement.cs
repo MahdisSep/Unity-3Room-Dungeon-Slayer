@@ -55,11 +55,11 @@ public class PlayerMovement : MonoBehaviour
              }
              else
              {
-                body.gravityScale = 7; // if char is not on wall then fall
+                body.gravityScale = 6; // if char is not on wall then fall
              }
 
             if(Input.GetKey(KeyCode.Space)) // if the key is space and character is on the ground then jump
-            jump();
+                jump();
 
 
         }
@@ -96,7 +96,6 @@ public class PlayerMovement : MonoBehaviour
 
         }
         
-
     }
 
     private bool isGrounded(){ 

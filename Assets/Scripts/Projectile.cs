@@ -1,4 +1,3 @@
-
 using System;
 using UnityEngine;
 
@@ -6,6 +5,7 @@ public class Projectile : MonoBehaviour
 {
     [SerializeField] private float speed;
     private bool hit;
+    private float lifetime;
     private BoxCollider2D boxCollider;
     private Animator anim;
     private float direction; //which direction the fireball will fly
@@ -21,6 +21,8 @@ public class Projectile : MonoBehaviour
         if(hit) return;
         float movementSpeed = speed * Time.deltaTime*direction;
         transform.Translate(movementSpeed,0,0); // just x asix changed ???
+        lifetime += Time.deltaTime;
+        if (lifetime > 5) gameObject.SetActive(false);
 
     }
 
@@ -33,6 +35,7 @@ public class Projectile : MonoBehaviour
 
     public void SetDirection(float _direction) // call this method everytime we shoot for choosing the direction left or right
     {
+        lifetime = 0;
         direction = _direction;
         gameObject.SetActive(true);
         hit = false ;
