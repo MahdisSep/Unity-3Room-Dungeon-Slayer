@@ -24,4 +24,12 @@ public class Health : MonoBehaviour
             //player dead
         }
     }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            TakeHurt(1); // everytime we tap E red heart gonna disapeared -> just for testing
+        }
+    }
 }
