@@ -1,7 +1,6 @@
-
 using UnityEngine;
 
-public class Enemy_side : MonoBehaviour
+public class Enemy_Side2 : MonoBehaviour
 {
     [SerializeField] private float movementDis;
     [SerializeField] private float speed;
@@ -9,6 +8,8 @@ public class Enemy_side : MonoBehaviour
     private bool movingL;
     private float LEdge;
     private float REdge;
+    
+     private float horizontalInput;
 
     private void Awake()
     {
@@ -23,7 +24,7 @@ public class Enemy_side : MonoBehaviour
             if(transform.position.x > LEdge)
             {
                 transform.position = new Vector3(transform.position.x - speed * Time.deltaTime , transform.position.y , transform.position.z);
-                transform.localScale = new Vector3(-5,5,5);
+                 transform.localScale = new Vector3(-5,5,5);
             }
             else
             {
@@ -44,6 +45,17 @@ public class Enemy_side : MonoBehaviour
             }
             
         }
+
+        //horizontalInput = Input.GetAxis("Horizontal");
+
+        // if(transform.position.x < REdge) //flip character to the right
+        // {
+        //     transform.localScale = new Vector3(5,5,5);
+        // }
+        // else if (horizontalInput < -0.01f) //flip character to the left
+        // {
+        //     transform.localScale = new Vector3(-5,5,5);
+        // }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
