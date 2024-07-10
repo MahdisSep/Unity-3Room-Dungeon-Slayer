@@ -35,6 +35,12 @@ public class Health : MonoBehaviour
         }   
     }
 
+    public void addHealth(float _heart)
+    {
+        currentHealth = Mathf.Clamp(currentHealth + _heart , 0, initialHealth);
+
+    }
+
     // private void Update()
     // {
     //     if(Input.GetKeyDown(KeyCode.E))
