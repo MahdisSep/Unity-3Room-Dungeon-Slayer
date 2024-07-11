@@ -14,16 +14,25 @@ public class Firetrap : MonoBehaviour
     private bool triggered; //when the trap gets triggered
     private bool active; //when the trap is active and can hurt the player
 
+     private Health playerHealth;
+
     private void Awake()
     {
         anim = GetComponent<Animator>();
         spriteRend = GetComponent<SpriteRenderer>();
     }
 
+    private void Update()
+    {
+        if (playerHealth != null && active)
+            playerHealth.TakeHurt(damage);
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
+            playerHealth = collision.GetComponent<Health>();
             if (!triggered)
                 StartCoroutine(ActivateFiretrap());//when we use IEnumerator we should startCoroutine.
 
@@ -31,6 +40,13 @@ public class Firetrap : MonoBehaviour
                 collision.GetComponent<Health>().TakeHurt(damage);
         }
     }
+
+      private void OnTriggerExit2D(Collider2D collision) //once player exit the firetrap shouldn't be hurt.
+    {
+        if (collision.tag == "Player")
+            playerHealth = null;
+    }
+
     private IEnumerator ActivateFiretrap() //beacuse we have to deal with delay.
     {
         //turn the sprite red to notify the player and trigger the trap
