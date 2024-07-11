@@ -17,7 +17,7 @@ public class Health : MonoBehaviour
     private SpriteRenderer spriteRend;
 
     [Header("Components")]
-    //[SerializeField] private Behaviour[] components;
+    [SerializeField] private Behaviour[] components;
     private bool invulnerable;
 
     private void Awake()
@@ -29,6 +29,7 @@ public class Health : MonoBehaviour
 
     public void TakeHurt(float _damage)
     {
+        if(invulnerable) return;
         currentHealth = Mathf.Clamp(currentHealth - _damage , 0, initialHealth);
 
         if (currentHealth > 0)
@@ -43,19 +44,19 @@ public class Health : MonoBehaviour
             {
                  //player dead
             anim.SetTrigger("die");
-            GetComponent<PlayerMovement>().enabled = false; //player can not move if it is dead.
+            // GetComponent<PlayerMovement>().enabled = false; //player can not move if it is dead.
 
-            //enemy dead
-            if(GetComponent<EnemyFire>() != null)
-                GetComponent<EnemyFire>().enabled = false;
-            if(GetComponent<MainEnemy>() != null)
-                GetComponent<MainEnemy>().enabled = false;
-            dead = true;
+            // //enemy dead
+            // if(GetComponent<EnemyFire>() != null)
+            //     GetComponent<EnemyFire>().enabled = false;
+            // if(GetComponent<MainEnemy>() != null)
+            //     GetComponent<MainEnemy>().enabled = false;
+            // dead = true;
 
-            //  foreach (Behaviour component in components)
-            //         component.enabled = false;
+             foreach (Behaviour component in components)
+                    component.enabled = false;
 
-            //     dead = true;
+                dead = true;
            
             }
         }   
@@ -93,6 +94,10 @@ public class Health : MonoBehaviour
 
         Physics2D.IgnoreLayerCollision(10,11,false);
         invulnerable = false;
+    }
+    private void Deactivate()
+    {
+        gameObject.SetActive(false);
     }
 
 }
