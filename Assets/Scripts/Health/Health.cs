@@ -1,4 +1,5 @@
 using System.Collections;
+
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -14,6 +15,10 @@ public class Health : MonoBehaviour
     [SerializeField] private float invalunarabilityTime;
     [SerializeField] private int numOfFlashes;
     private SpriteRenderer spriteRend;
+
+    [Header("Components")]
+    //[SerializeField] private Behaviour[] components;
+    private bool invulnerable;
 
     private void Awake()
     {
@@ -39,7 +44,19 @@ public class Health : MonoBehaviour
                  //player dead
             anim.SetTrigger("die");
             GetComponent<PlayerMovement>().enabled = false; //player can not move if it is dead.
+
+            //enemy dead
+            if(GetComponent<EnemyFire>() != null)
+                GetComponent<EnemyFire>().enabled = false;
+            if(GetComponent<MainEnemy>() != null)
+                GetComponent<MainEnemy>().enabled = false;
             dead = true;
+
+            //  foreach (Behaviour component in components)
+            //         component.enabled = false;
+
+            //     dead = true;
+           
             }
         }   
     }
@@ -60,6 +77,7 @@ public class Health : MonoBehaviour
 
     private IEnumerator Invulnerability()
     {
+        invulnerable = true;
         Physics2D.IgnoreLayerCollision(10, 11,true);
 
         //invulnerability duration
@@ -74,6 +92,7 @@ public class Health : MonoBehaviour
         }
 
         Physics2D.IgnoreLayerCollision(10,11,false);
+        invulnerable = false;
     }
 
 }

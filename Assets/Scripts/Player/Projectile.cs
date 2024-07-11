@@ -31,6 +31,9 @@ public class Projectile : MonoBehaviour
         hit = true;
         boxCollider.enabled = false; ///???
         anim.SetTrigger("explode");
+
+        if (collision.tag == "Enemy")
+            collision.GetComponent<Health>().TakeHurt(1);
     }
 
     public void SetDirection(float _direction) // call this method everytime we shoot for choosing the direction left or right
