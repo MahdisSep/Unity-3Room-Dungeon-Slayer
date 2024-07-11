@@ -43,7 +43,7 @@ public class Health : MonoBehaviour
             if(!dead)
             {
                  //player dead
-            anim.SetTrigger("die");
+            
             // GetComponent<PlayerMovement>().enabled = false; //player can not move if it is dead.
 
             // //enemy dead
@@ -55,6 +55,8 @@ public class Health : MonoBehaviour
 
              foreach (Behaviour component in components)
                     component.enabled = false;
+             anim.SetBool("grounded",true);
+             anim.SetTrigger("die");
 
                 dead = true;
            
@@ -100,4 +102,19 @@ public class Health : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+     public void Respawn()
+    {
+        dead = false ;
+        addHealth(initialHealth);
+        anim.ResetTrigger("die");
+        anim.Play("Idle");
+        StartCoroutine(Invulnerability());
+
+        //Activate all attached component classes
+        foreach (Behaviour component in components)
+            component.enabled = true;
+    }
 }
+
+
+
