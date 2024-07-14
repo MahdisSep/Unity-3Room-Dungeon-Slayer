@@ -26,7 +26,7 @@ public class PlayerRespawn : MonoBehaviour
         {
             currentCheckpoint = collision.transform;
             collision.GetComponent<Collider2D>().enabled = false;
-            collision.GetComponent<Animator>().SetTrigger("activate");
+            collision.GetComponent<Animator>().SetTrigger("active");
         }
     }
 }

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5879327576345059788}
   - component: {fileID: 8229555945141338850}
   - component: {fileID: 6677184750008914111}
+  - component: {fileID: -8191648153491815058}
   m_Layer: 11
   m_Name: Bear
   m_TagString: Untagged
@@ -168,3 +169,22 @@ MonoBehaviour:
   movementDis: 5
   speed: 3
   damage: 1
+--- !u!114 &-8191648153491815058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3325722116689622319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06fc62b8b4228434a97a688878ee6678, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  speed: 0
+  range: 0
+  checkDelay: 0
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 0

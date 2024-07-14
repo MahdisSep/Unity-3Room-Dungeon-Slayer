@@ -52,11 +52,11 @@ public class Health : MonoBehaviour
             // if(GetComponent<MainEnemy>() != null)
             //     GetComponent<MainEnemy>().enabled = false;
             // dead = true;
-
+             anim.SetTrigger("die");
              foreach (Behaviour component in components)
                     component.enabled = false;
-             anim.SetBool("grounded",true);
-             anim.SetTrigger("die");
+             //anim.SetBool("grounded",true);
+             
 
                 dead = true;
            
