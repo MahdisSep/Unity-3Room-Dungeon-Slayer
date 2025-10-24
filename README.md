@@ -77,4 +77,3 @@ This project requires **Unity** to run.
 3.  **Run:** Press the Play button in the Unity Editor.
 
 *(Note: The `SampleScene.unity` file is the primary scene containing all game objects and logic.)*
-````
