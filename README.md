@@ -43,6 +43,28 @@ Each room contains hazards designed to test player navigation and reaction time:
 
 ---
 
+### Game Design 
+
+
+#### All rooms
+
+![images](https://github.com/MahdisSep/Unity-3Room-Dungeon-Slayer/blob/main/Room%20Pictures/All%20rooms.png)
+
+#### Room 1
+
+![images](https://github.com/MahdisSep/Unity-3Room-Dungeon-Slayer/blob/main/Room%20Pictures/room1.png)
+
+#### Room 2
+
+![images](https://github.com/MahdisSep/Unity-3Room-Dungeon-Slayer/blob/main/Room%20Pictures/room2.png)
+
+#### Room 3
+
+![images](https://github.com/MahdisSep/Unity-3Room-Dungeon-Slayer/blob/main/Room%20Pictures/room3.png)
+
+
+-----
+
 ## 🚀 How to Run the Project
 
 This project requires **Unity** to run.
